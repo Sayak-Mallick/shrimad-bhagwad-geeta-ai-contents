@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "geeta_contents",
+  "info": {
+    "singularName": "geeta-content",
+    "pluralName": "geeta-contents",
+    "displayName": "geeta-content",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "originalVerse": {
+      "type": "string"
+    },
+    "Translation": {
+      "type": "string"
+    },
+    "Image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Commentary": {
+      "type": "richtext",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Title",
+      "required": true
+    },
+    "chapter": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::chapter.chapter",
+      "inversedBy": "geeta_contents"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "geeta_contents"
+    },
+    "shortDescription": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
